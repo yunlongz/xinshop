@@ -62,12 +62,18 @@ var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 21;
 rule.minute = 11;
-
-var j = schedule.scheduleJob(rule, function(){
-  console.log('Today is recognized by Rebecca Black!');
+var rule1 = new schedule.RecurrenceRule();
+rule1.dayOfWeek = [0, new schedule.Range(1, 6)];
+rule1.hour = 6;
+rule1.minute = 10;
+var everyDayNight = schedule.scheduleJob(rule, function(){
+  console.log('晚上也需要更新一次!');
   loadWebData()
 });
-
+var everyDayMorning = schedule.scheduleJob(rule1, function(){
+  console.log('早上来更新一发!');
+  loadWebData()
+});
 var dbUrl = process.env.MONGOHQ_URL
   || 'mongodb://@127.0.0.1:27017/xinshop';
 
