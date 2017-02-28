@@ -1,0 +1,37 @@
+{
+    "code": "200",
+    "msg": "success",
+    "group": [
+        {
+            
+            "kind":"bracelet",
+           	"categories":[{
+           		 "name": "Fawnxfern",
+	            "id": 3,
+              "holdNum":111,
+	            "url":"https://gd4.alicdn.com/imgextra/i4/268534713/TB2Lkmac3xlpuFjy0FoXXa.lXXa_!!268534713.jpg"
+           	},
+           	{
+           		 "name": "Fawnxfern",
+	            "id": 4,
+              "holdNum":4,
+	            "url":"https://gd4.alicdn.com/imgextra/i4/268534713/TB2Lkmac3xlpuFjy0FoXXa.lXXa_!!268534713.jpg"
+           	}
+           	]
+        },
+        {
+            
+            "kind":"earrings",
+           	"categories":[{
+           		 "name": "Fawnxfern-bracelet",
+	            "id": 1,
+              "holdNum":100,
+	            "url":"https://gd4.alicdn.com/imgextra/i4/268534713/TB2Lkmac3xlpuFjy0FoXXa.lXXa_!!268534713.jpg"
+           	}
+           	
+           	]
+        }
+        
+    ],
+    "count": 2
+}
