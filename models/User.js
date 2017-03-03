@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var ObjectId = mongoose.Schema.Types.ObjectId;
 var User = new Schema({
 	username: { type : String, default : '' },
-	 _jewelry: [{ type: ObjectId, ref: 'Jewelry' }]
+	 _jewelry: [{ type: ObjectId, ref: 'Jewelry' }],
 	createdAt: { type : Date, default : Date.now }
 })
 
-exports.Jewelry = mongoose.model('Jewelry', Jewelry);
+exports.User = mongoose.model('User', User);

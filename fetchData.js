@@ -90,9 +90,10 @@ var queneFetch = function(categroy){
                         }
                     }
                     if(++count == categroy.length*(page-1)){
-                        console.log("all down")
-                            Jewelry.collection.drop()
-                              var docs = jsonData.group
+                        Jewelry.count({},function(err,count){
+                            if(count == 0){
+                                console.log("init data")
+                                 let docs = jsonData.group
                                 Jewelry.collection.insert(docs, onInsert);
                                 function onInsert(err, docs) {
                                     if (err) {
@@ -102,6 +103,39 @@ var queneFetch = function(categroy){
                                         console.info('%d potatoes were successfully stored.', count);
                                     }
                                 }
+                            }
+                            else{
+                                console.log("add new data")
+                                 Jewelry.find({}, function(err, lists) {
+                                    let cat = jsonData.group
+                                    lists.map(item =>{
+                                    for (let i = 0 ; i < cat.length ; i++){
+                                      if(item.title == cat[i].title && item.isSoldOut != cat[i].isSoldOut ){
+                                        Jewelry.findOneAndUpdate({title:cat[i].title}, { $set: { isSoldOut:cat[i].isSoldOut,  "createdAt":moment().format() }},function(err,res){
+                                          console.log(item._id.$oid)
+                                          console.log(err)
+
+                                        })
+                                      }
+                                    }
+                                  })
+                        })
+                            }
+                        })
+                       
+                        
+                        // console.log("all down")
+                        //     Jewelry.collection.drop()
+                        //       var docs = jsonData.group
+                        //         Jewelry.collection.insert(docs, onInsert);
+                        //         function onInsert(err, docs) {
+                        //             if (err) {
+                        //                 // TODO: handle error
+                        //                 console.info("err",err)
+                        //             } else {
+                        //                 console.info('%d potatoes were successfully stored.', count);
+                        //             }
+                        //         }
                     }
                     done();
                 }

@@ -60,8 +60,8 @@ var loadWebData = function(){
 }
 var rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 21;
-rule.minute = 11;
+rule.hour = 16;
+rule.minute = 32;
 var rule1 = new schedule.RecurrenceRule();
 rule1.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule1.hour = 6;
