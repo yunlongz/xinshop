@@ -124,7 +124,9 @@ router.post('/jewelry/myjewelry',function(req, res, next) {
 
   User.findOne({username: username }).populate('_jewelry').exec(function(err, lists){
     var newArray = Array.from(new Set(lists._jewelry))
-    res.send(newArray)
+    lists._jewelry = newArray
+    console.log(lists._jewelry)
+    res.send(lists)
   })
   
 })
@@ -133,7 +135,10 @@ router.get('/jewelry/myjewelry',function(req, res, next) {
 
   User.findOne({username: username }).populate('_jewelry').exec(function(err, lists){
     var newArray = Array.from(new Set(lists._jewelry))
-    res.send(newArray)
+      lists._jewelry = newArray
+    console.log(lists._jewelry)
+    console.log(newArray)
+    res.send(lists)
   })
   
 })
