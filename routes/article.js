@@ -123,7 +123,17 @@ router.post('/jewelry/myjewelry',function(req, res, next) {
   var username = req.body.username;
 
   User.findOne({username: username }).populate('_jewelry').exec(function(err, lists){
-    res.send(lists)
+    var newArray = Array.from(new Set(lists._jewelry))
+    res.send(newArray)
+  })
+  
+})
+router.get('/jewelry/myjewelry',function(req, res, next) {
+  var username = req.query.username;
+
+  User.findOne({username: username }).populate('_jewelry').exec(function(err, lists){
+    var newArray = Array.from(new Set(lists._jewelry))
+    res.send(newArray)
   })
   
 })
