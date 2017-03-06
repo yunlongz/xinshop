@@ -119,6 +119,26 @@ router.post('/jewelry/find', function(req, res, next) {
     });
   });
 });
+router.post('/jewelry/delete', function(req, res, next) {
+  var id = req.body.id ;
+  var username = req.body.username;
+  console.log(username)
+  var condition =  req.body.condition || {}
+  User.findOne({username: username },function(err,user,next){
+    user._jewelry = user._jewelry.filter((item)=>item!=id)
+    user.save(function(err,response){
+      Jewelry.findByIdAndUpdate(id,{ $set: { isExist: false }},function(err,jewelry){
+        console.log("移除商品")
+         if (err) return handleError(err);
+        res.json({
+          bkCode : '00'
+        })
+      })
+    })
+  });
+ 
+
+});
 router.post('/jewelry/myjewelry',function(req, res, next) {
   var username = req.body.username;
 
